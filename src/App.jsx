@@ -1,8 +1,11 @@
-import AppRouter from './AppRouter'
+import ErrorBoundary from './ErrorBoundary';
+import AppRouter from './AppRouter';
 
 function App() {
   return (
-    <AppRouter />
+    <ErrorBoundary>
+      <AppRouter />
+    </ErrorBoundary>
   );
 }
 
