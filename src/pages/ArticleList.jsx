@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { getArticles } from '../REST/articles';
+import { ListGroup } from "react-bootstrap";
 
 const ArticleList = () => {
   const [articles, setArticles] = useState([]);
@@ -16,8 +17,9 @@ const ArticleList = () => {
     }
   }
 
+
   const articlesMap = articles.map((article) => {
-    return <div>Name: {article.name}</div>
+    return <ListGroup.Item><div>Name: {article.name}</div></ListGroup.Item>
   })
 
   console.log('articles', articles)
@@ -26,7 +28,7 @@ const ArticleList = () => {
     <>
       <h1>Список статей</h1>
       <div>
-        {articlesMap}
+        <ListGroup variant="flush">{articlesMap}</ListGroup>
       </div>
     </>
   )
