@@ -18,11 +18,13 @@ const ArticleList = () => {
     }
   }
 
-  const articlesMap = articles.map((article) => {
-    return <ListItem article={article}></ListItem>
+  const articlesMap = articles.map((article,index) => {
+    article.id=index+1;
+    console.log(article);
+    return <ListItem key={article.name} article={article} id={article.id}></ListItem>
   })
 
-  console.log('articles', articles)
+  {/*console.log('articles', articles)*/}
   
   return (
     <>
