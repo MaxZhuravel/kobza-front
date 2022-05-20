@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { getArticles } from '../REST/articles';
 import { ListGroup } from "react-bootstrap";
+import { ListItem } from "../components";
 
 const ArticleList = () => {
   const [articles, setArticles] = useState([]);
@@ -17,9 +18,8 @@ const ArticleList = () => {
     }
   }
 
-
   const articlesMap = articles.map((article) => {
-    return <ListGroup.Item><div>Name: {article.name}</div></ListGroup.Item>
+    return <ListItem article={article}></ListItem>
   })
 
   console.log('articles', articles)
