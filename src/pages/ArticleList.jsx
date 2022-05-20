@@ -5,6 +5,7 @@ import { ListItem } from "../components";
 
 const ArticleList = () => {
   const [articles, setArticles] = useState([]);
+  const [searchQuery, setSearchQuery] = useState('');
 
   useEffect(() => {
     loadArticles()
@@ -18,7 +19,9 @@ const ArticleList = () => {
     }
   }
 
-  const articlesMap = articles.map((article,index) => {
+  const articlesMap = articles.filter(
+    article=>article.name.toLocaleLowerCase().includes(searchQuery.toLocaleLowerCase())
+  ).map((article,index) => {
     article.id=index+1;
     console.log(article);
     return <ListItem key={article.name} article={article} id={article.id}></ListItem>
@@ -33,6 +36,8 @@ const ArticleList = () => {
           placeholder="Пошук"
           aria-label="Пошук"
           aria-describedby="basic-addon2"
+          value={searchQuery}
+          onChange={e => setSearchQuery(e.target.value)}
         />
         <Button variant="outline-secondary" id="button-addon2">
           Пошук
