@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { getArticles } from '../REST/articles';
-import { ListGroup } from "react-bootstrap";
+import { ListGroup, InputGroup, FormControl, Button } from "react-bootstrap";
 import { ListItem } from "../components";
 
 const ArticleList = () => {
@@ -28,6 +28,16 @@ const ArticleList = () => {
   
   return (
     <>
+      <InputGroup className="mb-3 mt-3">
+        <FormControl
+          placeholder="Пошук"
+          aria-label="Пошук"
+          aria-describedby="basic-addon2"
+        />
+        <Button variant="outline-secondary" id="button-addon2">
+          Пошук
+        </Button>
+      </InputGroup>
       <h1>Список статей</h1>
       <div>
         <ListGroup variant="flush">{articlesMap}</ListGroup>

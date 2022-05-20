@@ -7,12 +7,12 @@ const ListItem = (props) => {
 
   return (
         <ListGroup.Item>
-                <Link 
-                    to={`/articles/${props.article.id}`}
-                    className={classes.ListItemLink}
-                >
-                    {props.article.id}.{props.article.name}
-                </Link>
+            <Link 
+                to={`/articles/${props.article.id}`}
+                className={classes.ListItemLink}
+            >
+                {props.article.id}.{props.article.name}
+            </Link>
         </ListGroup.Item>
   )
 }
