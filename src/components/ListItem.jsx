@@ -3,15 +3,16 @@ import { ListGroup,} from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import classes from './ListItem.module.css'
 
-const ListItem = (props) => {
+const ListItem = ({article}) => {
+    console.log(article.some-test);
 
-  return (
+    return (
         <ListGroup.Item>
             <Link 
-                to={`/articles/${props.article.id}`}
+                to={`/articles/${article?.id}`}
                 className={classes.ListItemLink}
             >
-                {props.article.id}.{props.article.name}
+                {article?.id}.{article?.name}
             </Link>
         </ListGroup.Item>
   )
