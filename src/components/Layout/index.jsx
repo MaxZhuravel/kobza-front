@@ -9,12 +9,10 @@ import { Footer } from '..';
 const Layout = () => {
 
     const[showLogIn,setShowLogIn] = useState(false);
-    const[showSignIn,setShowSignIn] = useState(false);
+    const[showSignUp,setShowSignUp] = useState(false);
 
-    const handleCloseLogIn=()=>setShowLogIn(false);
-    const handleCloseSignIn=()=>setShowSignIn(false);
-    const handleShowLogIn=()=>setShowLogIn(true);
-    const handleShowSignIn=()=>setShowSignIn(true);
+    const checkStateLogIn=()=>showLogIn === true ? setShowLogIn(false) : setShowLogIn(true);
+    const checkStateSignUp=()=>showSignUp === true ? setShowSignUp(false) : setShowSignUp(true);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -42,15 +40,15 @@ const Layout = () => {
                             <Nav.Link><Link to="/about">Про нас</Link></Nav.Link>
                         </Nav>
                         <Nav>
-                            <Button variant="primary" className="me-2" onClick={handleShowLogIn}>Увійти</Button>
-                            <Button variant="primary" onClick={handleShowSignIn}>Зареєструватись</Button>
+                            <Button variant="primary" className="me-2" onClick={checkStateLogIn}>Увійти</Button>
+                            <Button variant="primary" onClick={checkStateSignUp}>Зареєструватись</Button>
                         </Nav>
                     </Navbar.Collapse>
                 </Container>
             </Navbar>
         </Styles>
 
-        <Modal show = {showLogIn} onHide = {handleCloseLogIn}>
+        <Modal show = {showLogIn} onHide = {checkStateLogIn}>
             <Modal.Header closeButton>
                 <Modal.Title>Увійти</Modal.Title>
             </Modal.Header>
@@ -73,7 +71,7 @@ const Layout = () => {
             </Modal.Body>
         </Modal>
 
-        <Modal show = {showSignIn} onHide = {handleCloseSignIn}>
+        <Modal show = {showSignUp} onHide = {checkStateSignUp}>
             <Modal.Header closeButton>
                 <Modal.Title>Зареєструватись</Modal.Title>
             </Modal.Header>
