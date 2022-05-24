@@ -21,10 +21,10 @@ const ArticleList = () => {
   console.log(articles);
 
   const articlesMap = articles.filter(
-    article=>article.attributes.Title.toLocaleLowerCase().includes(searchQuery.toLocaleLowerCase())
+    article=>article?.attributes?.Title.toLocaleLowerCase().includes(searchQuery.toLocaleLowerCase())
   ).map((article,index) => {
     console.log(article);
-    return <ListItem key={article.id} index = {index+1} id={article.id} Title={article.attributes.Title}></ListItem>
+    return <ListItem key={article?.id} index = {index+1} id={article?.id} Title={article?.attributes?.Title}></ListItem>
   })
 
   
