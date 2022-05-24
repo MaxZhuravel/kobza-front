@@ -8,3 +8,9 @@ export async function getArticles() {
     console.log(response.data);
     return response.data;
 }
+
+export async function getOneArticle(id) {
+    const response = await axios.get(`${URL}/articles/${id}`);
+    console.log(response.data);
+    return response.data;
+}
