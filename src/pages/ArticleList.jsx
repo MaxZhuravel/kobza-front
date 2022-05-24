@@ -13,21 +13,20 @@ const ArticleList = () => {
 
   function loadArticles() {
     try {
-      getArticles().then((data) => setArticles(data?.results))
+      getArticles().then((data) => setArticles(data?.data))
     } catch (error) {
       console.log('Load Articles error:', error)
     }
   }
+  console.log(articles);
 
   const articlesMap = articles.filter(
-    article=>article.name.toLocaleLowerCase().includes(searchQuery.toLocaleLowerCase())
+    article=>article.attributes.Title.toLocaleLowerCase().includes(searchQuery.toLocaleLowerCase())
   ).map((article,index) => {
-    article.id=index+1;
     console.log(article);
-    return <ListItem key={article.name} article={article} id={article.id}></ListItem>
+    return <ListItem key={article.id} index = {index+1} Title={article.attributes.Title}></ListItem>
   })
 
-  {/*console.log('articles', articles)*/}
   
   return (
     <>
