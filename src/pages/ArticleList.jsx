@@ -24,7 +24,7 @@ const ArticleList = () => {
     article=>article.attributes.Title.toLocaleLowerCase().includes(searchQuery.toLocaleLowerCase())
   ).map((article,index) => {
     console.log(article);
-    return <ListItem key={article.id} index = {index+1} Title={article.attributes.Title}></ListItem>
+    return <ListItem key={article.id} index = {index+1} id={article.id} Title={article.attributes.Title}></ListItem>
   })
 
   
