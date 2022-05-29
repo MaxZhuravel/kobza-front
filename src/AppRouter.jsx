@@ -1,8 +1,9 @@
-import React from "react";
+import React, {useContext} from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import Layout from './components'
 import { ArticleList, Article, About, CreateArticle, Main, NotFound } from "./pages"
+import { AuthContext } from './context';
 
 function App() {
   return (

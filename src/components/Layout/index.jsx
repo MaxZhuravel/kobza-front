@@ -1,12 +1,20 @@
-import React, {useState} from 'react'
+import React, {useContext,useState} from 'react'
 import { Nav, Modal, Navbar, Button, Container, Form } from "react-bootstrap";
 import { Link, Outlet } from "react-router-dom";
-import axios from 'axios';
 
 import Styles from './LayoutStyles';
 import { Footer } from '..';
+import LogIn from '../LogIn';
+import SignUp from '../SignUp';
+import LogOut from '../LogOut';
+import Authorization from '../Authorization';
+import { AuthContext } from '../../context';
 
 const Layout = () => {
+
+    const [email,setEmail]=useState("");
+    const [password,setPassword]=useState("");
+    const [username,setUsername]=useState("");
 
     const[showLogIn,setShowLogIn] = useState(false);
     const[showSignUp,setShowSignUp] = useState(false);
@@ -14,16 +22,7 @@ const Layout = () => {
     const handleStateLogIn=()=>showLogIn === true ? setShowLogIn(false) : setShowLogIn(true);
     const handleStateSignUp=()=>showSignUp === true ? setShowSignUp(false) : setShowSignUp(true);
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        const res = await axios.get(
-          `localhost:1337/users-details?email=$admin@admin.com&password=$12345678`
-        );
-        console.log(res.data);
-        if (res.data.length === 0) {
-          console.log('error')
-        }
-    }
+    const {isAuth,setIsAuth}=useContext(AuthContext);
 
   return (
     <>
@@ -40,58 +39,38 @@ const Layout = () => {
                             <Nav.Link><Link to="/about">Про нас</Link></Nav.Link>
                         </Nav>
                         <Nav>
-                            <Button variant="primary" className="me-2" onClick={handleStateLogIn}>Увійти</Button>
-                            <Button variant="primary" onClick={handleStateSignUp}>Зареєструватись</Button>
+                            {isAuth ? 
+                                <Authorization 
+                                    handleStateLogIn={handleStateLogIn}
+                                    handleStateSignUp={handleStateSignUp}
+                                />
+                                :
+                                <LogOut/>
+                            }
                         </Nav>
                     </Navbar.Collapse>
                 </Container>
             </Navbar>
         </Styles>
 
-        <Modal show = {showLogIn} onHide = {handleStateLogIn}>
-            <Modal.Header closeButton>
-                <Modal.Title>Увійти</Modal.Title>
-            </Modal.Header>
-            <Modal.Body>
-                <Form onSubmit={(e)=>handleSubmit(e)}>
-                    <Form.Group controlId="fromBasicEmail">
-                        <Form.Label>Електронна адреса (email)</Form.Label>
-                        <Form.Control type="email" placeholder="Введіть email"/>
-                        <Form.Text className="text-muted">Ми ніколи не передаємо ваші дані третім особам</Form.Text>
-                    </Form.Group>
-                    <Form.Group controlId="fromBasicPassword">
-                        <Form.Label>Пароль</Form.Label>
-                        <Form.Control type="password" placeholder="Введіть пароль"/>
-                    </Form.Group>
-                    <Form.Group controlId="fromBasicCheckbox">
-                        <Button type="submit"></Button>
-                        <Form.Check type="checkbox" label="Remember me"/>
-                    </Form.Group>
-                </Form>
-            </Modal.Body>
-        </Modal>
-
-        <Modal show = {showSignUp} onHide = {handleStateSignUp}>
-            <Modal.Header closeButton>
-                <Modal.Title>Зареєструватись</Modal.Title>
-            </Modal.Header>
-            <Modal.Body>
-                <Form>
-                    <Form.Group controlId="fromBasicEmail">
-                        <Form.Label>Електронна адреса (email)</Form.Label>
-                        <Form.Control type="email" placeholder="Введіть email"/>
-                        <Form.Text className="text-muted">Ми ніколи не передаємо ваші дані третім особам</Form.Text>
-                    </Form.Group>
-                    <Form.Group controlId="fromBasicPassword">
-                        <Form.Label>Пароль</Form.Label>
-                        <Form.Control type="password" placeholder="Введіть пароль"/>
-                    </Form.Group>
-                    <Form.Group controlId="fromBasicCheckbox">
-                        <Form.Check type="checkbox" label="Remember me"/>
-                    </Form.Group>
-                </Form>
-            </Modal.Body>
-        </Modal>
+        <LogIn 
+            showLogIn={showLogIn} 
+            handleStateLogIn={handleStateLogIn} 
+            email={email} 
+            password={password} 
+            setEmail={setEmail}
+            setPassword={setPassword}
+        />
+        <SignUp 
+            showSignUp={showSignUp} 
+            handleStateSignUp={handleStateSignUp}
+            email={email} 
+            password={password} 
+            username={username}
+            setEmail={setEmail}
+            setPassword={setPassword}
+            setUsername={setUsername}
+        />
 
         <Container fluid>
             <Outlet/>
