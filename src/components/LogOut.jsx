@@ -1,17 +1,14 @@
 import { Button } from 'react-bootstrap'
 import React from 'react'
 import { useContext } from 'react'
-import { AuthContext } from '../context'
+import { AuthContext } from '../context/AuthContext'
 
 const LogOut = () => {
     const {isAuth,setIsAuth} = useContext(AuthContext);
-    function out(){
-        setIsAuth(false);
-        localStorage.clear();
-    }
+    const logout = () => setIsAuth(false);
   return (
     <>
-        <Button onClick={out}>Вийти</Button>
+        <Button onClick={logout}>Вийти</Button>
     </>
   )
 }

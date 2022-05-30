@@ -1,10 +1,12 @@
 import { useState } from 'react';
 import ErrorBoundary from './ErrorBoundary';
 import AppRouter from './AppRouter';
-import { AuthContext } from './context';
+import { AuthContext } from './context/AuthContext';
 
 function App() {
+  
   const [isAuth,setIsAuth]=useState(false);
+  
   return (
     <ErrorBoundary>
       <AuthContext.Provider value={{

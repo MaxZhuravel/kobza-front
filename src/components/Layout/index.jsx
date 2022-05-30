@@ -1,4 +1,4 @@
-import React, {useContext,useState} from 'react'
+import React, {useContext,useEffect,useState} from 'react'
 import { Nav, Modal, Navbar, Button, Container, Form } from "react-bootstrap";
 import { Link, Outlet } from "react-router-dom";
 
@@ -8,9 +8,17 @@ import LogIn from '../LogIn';
 import SignUp from '../SignUp';
 import LogOut from '../LogOut';
 import Authorization from '../Authorization';
-import { AuthContext } from '../../context';
+import { UserContext } from '../../context/UserContext';
+import { AuthContext } from '../../context/AuthContext';
 
 const Layout = () => {
+
+    const { isAuth, setIsAuth } = useContext(AuthContext);
+    useEffect(()=>{
+        if(localStorage.getItem('kobza-jwt')){
+            setIsAuth(true);
+        }
+    },[])
 
     const [email,setEmail]=useState("");
     const [password,setPassword]=useState("");
@@ -22,7 +30,7 @@ const Layout = () => {
     const handleStateLogIn=()=>showLogIn === true ? setShowLogIn(false) : setShowLogIn(true);
     const handleStateSignUp=()=>showSignUp === true ? setShowSignUp(false) : setShowSignUp(true);
 
-    const {isAuth,setIsAuth}=useContext(AuthContext);
+    const{user}=useContext(UserContext);
 
   return (
     <>
@@ -39,14 +47,14 @@ const Layout = () => {
                             <Nav.Link><Link to="/about">Про нас</Link></Nav.Link>
                         </Nav>
                         <Nav>
-                            {isAuth ? 
+                            {isAuth ?
+                                <LogOut/>
+                            :
                                 <Authorization 
                                     handleStateLogIn={handleStateLogIn}
                                     handleStateSignUp={handleStateSignUp}
                                 />
-                                :
-                                <LogOut/>
-                            }
+                        }  
                         </Nav>
                     </Navbar.Collapse>
                 </Container>
