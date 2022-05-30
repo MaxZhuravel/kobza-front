@@ -1,15 +1,12 @@
 import React, { useContext, useState } from 'react'
 import {Modal,Form,Button} from 'react-bootstrap';
-import { UserContext } from '../context/UserContext';
 import { AuthContext } from '../context/AuthContext';
 import { getAuth } from '../REST/authorization';
-import { login } from "../utils/login"
 
 const LogIn = ({showLogIn, handleStateLogIn}) => {
 
     const [email,setEmail]=useState("");
     const [password,setPassword]=useState("");
-    const {user,setUser} = useContext(UserContext);
     const {isAuth,setIsAuth}=useContext(AuthContext);
 
     async function login(e) {

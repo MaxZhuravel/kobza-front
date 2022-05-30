@@ -1,5 +1,5 @@
 import React, {useContext,useEffect,useState} from 'react'
-import { Nav, Modal, Navbar, Button, Container, Form } from "react-bootstrap";
+import { Nav, Modal, Navbar, Container} from "react-bootstrap";
 import { Link, Outlet } from "react-router-dom";
 
 import Styles from './LayoutStyles';
@@ -8,7 +8,6 @@ import LogIn from '../LogIn';
 import SignUp from '../SignUp';
 import LogOut from '../LogOut';
 import Authorization from '../Authorization';
-import { UserContext } from '../../context/UserContext';
 import { AuthContext } from '../../context/AuthContext';
 
 const Layout = () => {
@@ -29,8 +28,6 @@ const Layout = () => {
 
     const handleStateLogIn=()=>showLogIn === true ? setShowLogIn(false) : setShowLogIn(true);
     const handleStateSignUp=()=>showSignUp === true ? setShowSignUp(false) : setShowSignUp(true);
-
-    const{user}=useContext(UserContext);
 
   return (
     <>
