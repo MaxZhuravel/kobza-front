@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { getArticles } from '../REST/articles';
-import { getAuth } from '../REST/authorization';
 import { ListGroup} from "react-bootstrap";
 import { ListItem } from "../components";
 import SearchForm from "../components/SearchForm";

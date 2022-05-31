@@ -1,0 +1,13 @@
+.sidebar{
+    min-width: 25%;
+    min-height: 80vh;
+    margin-top: 10px;
+    font-size: 1.3em;
+}
+.sidebarLink{
+    color:black;
+    text-decoration: none;
+}
+.sidebarLink:hover{
+    font-size: 1.1em;
+}

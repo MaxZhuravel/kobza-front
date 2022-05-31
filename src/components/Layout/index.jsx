@@ -3,7 +3,8 @@ import { Nav, Navbar, Container} from "react-bootstrap";
 import { Link, Outlet } from "react-router-dom";
 
 import Styles from './LayoutStyles';
-import { Footer } from '..';
+import classes from './index.module.css'
+import { Footer, Sidebar } from '..';
 import LogIn from '../LogIn';
 import SignUp from '../SignUp';
 import LogOut from '../LogOut';
@@ -77,10 +78,13 @@ const Layout = () => {
             setUsername={setUsername}
         />
 
-        <Container fluid>
-            <Outlet/>
-        </Container>
+        <Container fluid className={classes.wrap}>
+            <Container fluid>
+                <Outlet/>
+            </Container>
 
+            <Sidebar/>
+        </Container>
         <Footer>
             &copy; {new Date().getFullYear()} Kobza
         </Footer>

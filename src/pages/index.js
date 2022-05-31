@@ -4,6 +4,7 @@ import ArticleList from './ArticleList';
 import CreateArticle from './CreateArticle';
 import Main from './Main';
 import NotFound from './404';
+import Invitation from './Invitation';
 
 export {
   About,
@@ -11,5 +12,6 @@ export {
   ArticleList,
   CreateArticle,
   Main,
-  NotFound
+  NotFound,
+  Invitation
 }
