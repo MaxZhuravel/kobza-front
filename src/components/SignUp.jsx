@@ -1,5 +1,6 @@
-import React, {useState} from 'react'
+import React, {useState, useContext} from 'react'
 import {Modal,Form,Button} from 'react-bootstrap';
+import { AuthContext } from '../context/AuthContext';
 import { registration } from '../REST/authorization';
 
 const SignUp = ({showSignUp,handleStateSignUp}) => {
@@ -7,6 +8,20 @@ const SignUp = ({showSignUp,handleStateSignUp}) => {
     const [username,setUsername]=useState("");
     const [email,setEmail]=useState("");
     const [password,setPassword]=useState("");
+    const {isAuth,setIsAuth}=useContext(AuthContext);
+
+    async function login(e) {
+        console.log('test', e)
+        e.preventDefault()
+        let user = await registration(username,email,password);
+        console.log('user: ', user);
+        if(localStorage.getItem('kobza-jwt')){
+            setIsAuth(true)
+        }else{
+            setIsAuth(false)
+        }
+        handleStateSignUp(false);
+    }
 
   return (
     <Modal show = {showSignUp} onHide = {handleStateSignUp}>
@@ -14,7 +29,7 @@ const SignUp = ({showSignUp,handleStateSignUp}) => {
             <Modal.Title>Зареєструватись</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-            <Form onSubmit={(e)=>registration(e,username,email,password)}>
+            <Form onSubmit={(e)=>login(e)}>
                 <Form.Group controlId="fromBasicUsername">
                     <Form.Label>Логін</Form.Label>
                     <Form.Control

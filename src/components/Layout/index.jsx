@@ -1,5 +1,5 @@
 import React, {useContext,useEffect,useState} from 'react'
-import { Nav, Modal, Navbar, Container} from "react-bootstrap";
+import { Nav, Navbar, Container} from "react-bootstrap";
 import { Link, Outlet } from "react-router-dom";
 
 import Styles from './LayoutStyles';

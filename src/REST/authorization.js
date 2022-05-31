@@ -2,7 +2,7 @@ import axios from 'axios';
 
 // Request API.
 export async function getAuth(identifier,password){
-    axios.post('http://localhost:1337/api/auth/local', {
+    return axios.post('http://localhost:1337/api/auth/local', {
         identifier,
         password
     })
@@ -20,12 +20,11 @@ export async function getAuth(identifier,password){
         localStorage.removeItem('kobza-jwt');
         console.log(localStorage.getItem('kobza-jwt'));
         console.log('An error occurred:', error.response);
-        return null;
     });
+
 }
 
-export async function registration(e,username,email,password){
-    e.preventDefault();
+export async function registration(username,email,password){
     axios.post('http://localhost:1337/api/auth/local/register', {
         username,
         email,
@@ -37,9 +36,12 @@ export async function registration(e,username,email,password){
         console.log('User profile', response.data.user);
         console.log('User token', response.data.jwt);
         localStorage.setItem('kobza-jwt',response.data.jwt);
+        localStorage.setItem('kobza-user',response.data.user);
+        return response.data.user;
     })
     .catch((error) => {
     // Handle error.
         console.log('An error occurred:', error.response);
+        return null;
     });
 }

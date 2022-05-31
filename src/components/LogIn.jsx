@@ -12,7 +12,7 @@ const LogIn = ({showLogIn, handleStateLogIn}) => {
     async function login(e) {
         console.log('test', e)
         e.preventDefault()
-        let user = await getAuth(email,password);
+        const user = await getAuth(email,password);
         console.log('user: ', user);
         if(localStorage.getItem('kobza-jwt')){
             setIsAuth(true)
