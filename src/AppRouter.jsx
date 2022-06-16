@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import Layout from './components'
-import { Cabinet, ArticleList, ConversationList, Article, About, CreateArticle, Main, Invitation, NotFound } from "./pages"
+import { Cabinet, ArticleList, ConversationList, EssayList, ReviewList, Article, Conversation, Essay, Review, About, CreateArticle, Main, Invitation, NotFound } from "./pages"
 
 import RequireAuth from "./hoc/RequireAuth";
 
@@ -15,7 +15,12 @@ function App() {
             <Route path="*" element={<NotFound/>}/>
             <Route path="/articles" element={<ArticleList/>}/>
             <Route path="/conversations" element={<ConversationList/>}/>
+            <Route path="/essays" element={<EssayList/>}/>
+            <Route path="/reviews" element={<ReviewList/>}/>
             <Route path="/articles/:id" element={<Article/>}/>
+            <Route path="/conversations/:id" element={<Conversation/>}/>
+            <Route path="/essays/:id" element={<Essay/>}/>
+            <Route path="/reviews/:id" element={<Review/>}/>
             <Route path="/articles/create-article" element={
               <RequireAuth>
                 <CreateArticle/>
