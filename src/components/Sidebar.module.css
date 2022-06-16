@@ -1,8 +1,10 @@
 .sidebar{
+    padding: 10px;
     min-width: 25%;
-    min-height: 80vh;
-    margin-top: 10px;
+    min-height: 83vh;
+    margin-top: 8px;
     font-size: 1.3em;
+    background-color: #212429;
 }
 .sidebarLink{
     color:black;

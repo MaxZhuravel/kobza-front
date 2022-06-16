@@ -12,13 +12,13 @@ export async function getAuth(identifier,password){
         console.log('User profile', response.data.user);
         console.log('User token', response.data.jwt);
         localStorage.setItem('kobza-jwt',response.data.jwt);
-        localStorage.setItem('kobza-user',response.data.user);
+        localStorage.setItem('kobza-user-id',response.data.user.id);
+        localStorage.setItem('kobza-username',response.data.user.username);
         return response.data.user;
     })
     .catch((error) => {
     // Handle error.
         localStorage.removeItem('kobza-jwt');
-        console.log(localStorage.getItem('kobza-jwt'));
         console.log('An error occurred:', error.response);
     });
 

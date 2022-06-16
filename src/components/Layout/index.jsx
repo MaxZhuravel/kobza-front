@@ -36,23 +36,26 @@ const Layout = () => {
             <Navbar collapseOnSelect expand="md" bg="dark" variant="dark">
                 <Container fluid>
                     <Navbar.Brand>
-                        <Link to="/">KOBZA</Link>
+                        <Link to="/" className={classes.logo}>KOBZA</Link>
                     </Navbar.Brand>
                     <Navbar.Toggle aria-controls="responsive-navbar-nav"/>
                     <Navbar.Collapse id = "responsive-navbar-nav">
                         <Nav className="me-auto">
                             <Nav.Link><Link to="/articles">Статті</Link></Nav.Link>
+                            <Nav.Link><Link to="/articles">Есе</Link></Nav.Link>
+                            <Nav.Link><Link to="/articles">Рецензії</Link></Nav.Link>
+                            <Nav.Link><Link to="/conversations">Обговорення</Link></Nav.Link>
                             <Nav.Link><Link to="/about">Про нас</Link></Nav.Link>
                         </Nav>
                         <Nav>
-                            {isAuth ?
+                            {isAuth ?                                
                                 <LogOut/>
                             :
-                                <Authorization 
+                                <Authorization
                                     handleStateLogIn={handleStateLogIn}
                                     handleStateSignUp={handleStateSignUp}
                                 />
-                        }  
+                            }  
                         </Nav>
                     </Navbar.Collapse>
                 </Container>
@@ -85,7 +88,7 @@ const Layout = () => {
 
             <Sidebar/>
         </Container>
-        <Footer>
+        <Footer className={classes.footer}>
             &copy; {new Date().getFullYear()} Kobza
         </Footer>
     </>

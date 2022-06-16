@@ -23,7 +23,13 @@ const ArticleList = () => {
   const articlesMap = articles.filter(
     article=>article?.attributes?.Title.toLocaleLowerCase().includes(searchQuery.toLocaleLowerCase())
   ).map((article) => {
-    return <ListItem key={article?.id} id={article?.id} Title={article?.attributes?.Title}></ListItem>
+    return <ListItem 
+              key={article?.id} 
+              id={article?.id} 
+              Title={article?.attributes?.Title} 
+              Body={article?.attributes?.Body}
+            >
+            </ListItem>
   })
 
   

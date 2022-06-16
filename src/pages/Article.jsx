@@ -20,7 +20,10 @@ const Article = () => {
   }
 
   return (
-    <h1>{article?.attributes?.Title}</h1>
+    <>
+      <h1>{article?.attributes?.Title}</h1>
+      <div>{article?.attributes?.Body}</div>
+    </>
   )
 }
 

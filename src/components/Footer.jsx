@@ -1,14 +1,13 @@
-import { Container, Navbar } from "react-bootstrap";
+import { Navbar } from "react-bootstrap";
+import classes from './Footer.module.css'
 
-const Footer = ({children}) => {
+const Footer = () => {
   return(
-    <div className="fixed-bottom">  
-        <Navbar>
-            <Container fluid>
-              {children}
-            </Container>
-        </Navbar>
-    </div>
+    <Navbar className="mt-2" bg="dark">
+      <div className={classes.footer}>
+          &copy; {new Date().getFullYear()} Kobza
+      </div>
+    </Navbar>
   )
 }
 

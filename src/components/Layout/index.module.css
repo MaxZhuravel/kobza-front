@@ -1,3 +1,12 @@
 .wrap{
     display: flex;
 }
+.footer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.logo{
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.3em;
+}

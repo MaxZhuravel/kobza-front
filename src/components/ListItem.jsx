@@ -3,7 +3,8 @@ import { ListGroup,} from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import classes from './ListItem.module.css'
 
-const ListItem = ({id,Title}) => {
+const ListItem = ({id,Title,Body}) => {
+    const visibleBody=Body.slice(0,500) + ' ...';
     return (
         <ListGroup.Item>
             <Link 
@@ -12,6 +13,7 @@ const ListItem = ({id,Title}) => {
             >
                 {Title}
             </Link>
+            <div>{visibleBody}</div>
         </ListGroup.Item>
   )
 }

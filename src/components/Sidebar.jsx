@@ -6,16 +6,16 @@ const Sidebar = () => {
   return (
     <>
       <ListGroup className = {classes.sidebar}>
-        <ListGroup.Item variant="dark">
+        <ListGroup.Item variant="light">
           <Link to="/articles/create-article" className={classes.sidebarLink}>Додати статтю</Link>
         </ListGroup.Item>
-        <ListGroup.Item variant="dark">
+        <ListGroup.Item variant="light">
           <Link to="/" className={classes.sidebarLink}>Додати обговорення</Link>
         </ListGroup.Item>
-        <ListGroup.Item variant="dark">
+        <ListGroup.Item variant="light">
           <Link to="/" className={classes.sidebarLink}>Додати рецензію</Link>
         </ListGroup.Item>
-        <ListGroup.Item variant="dark">
+        <ListGroup.Item variant="light">
           <Link to="/" className={classes.sidebarLink}>Додати есе</Link>
         </ListGroup.Item>
       </ListGroup>
